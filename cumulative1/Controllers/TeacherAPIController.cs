@@ -20,8 +20,7 @@ namespace cumulative1.Controllers
         /// GET: api/TeacherAPI/ListTeachers -> 
         /// [{"teacherID":1,"firstName":"Alexander","lastName":"Bennett","employeeNum":"T378","hireDate":"2016-08-05 00:00:00","salary":55.30}
         /// {"teacherID":2,"firstName":"Caitlin","lastName":"Cummings","employeeNum":"T381","hireDate":"2014-06-10 00:00:00","salary":62.77}
-        /// {"teacherID":3,"firstName":"Linda","lastName":"Chan","employeeNum":"T385","hireDate":"2014-06-22T00:00:00","salary":74.20}
-        /// {"teacherID":4,"firstName":"Lauren","lastName":"Smith","employeeNum":"T382","hireDate":"2015-08-22 00:00:00","salary":60.22}]
+        /// {"teacherID":3,"firstName":"Linda","lastName":"Chan","employeeNum":"T385","hireDate":"2014-06-22T00:00:00","salary":74.20}]
         /// </example>
 
         [HttpGet]

@@ -1792,11 +1792,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Mayuresh\\Desktop\\HTTP5125\\http5125-back-end-web-dev1\\cumulative1\\cumulative1\\cumulative1.csproj",
+      "projectUniqueName": "C:\\Users\\Mayuresh\\Desktop\\http5125-cumulativeproject\\cumulative1\\cumulative1.csproj",
       "projectName": "cumulative1",
-      "projectPath": "C:\\Users\\Mayuresh\\Desktop\\HTTP5125\\http5125-back-end-web-dev1\\cumulative1\\cumulative1\\cumulative1.csproj",
+      "projectPath": "C:\\Users\\Mayuresh\\Desktop\\http5125-cumulativeproject\\cumulative1\\cumulative1.csproj",
       "packagesPath": "C:\\Users\\Mayuresh\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Mayuresh\\Desktop\\HTTP5125\\http5125-back-end-web-dev1\\cumulative1\\cumulative1\\obj\\",
+      "outputPath": "C:\\Users\\Mayuresh\\Desktop\\http5125-cumulativeproject\\cumulative1\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
