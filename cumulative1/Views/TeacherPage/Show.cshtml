@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Teacher Information";
+}
+
+@model cumulative1.Models.Teacher
+
+<div class="teacherinfo">
+    <h1>@Model.FirstName @Model.LastName</h1>
+
+    <hr />
+     
+    <p><em>Employee Number:</em> <strong>@Model.EmployeeNum</strong></p>
+    <p><em>Hire Date:</em> <strong>@Model.HireDate.ToString("yyyy-MM-dd")</strong></p>
+    <p><em>Salary:</em> <strong>@Model.Salary</strong></p>
+    <a href="/TeacherPage/DeleteConfirm/@Model.TeacherID">Delete Teacher</a>
+</div>
+
+<style>
+    .teacherinfo {
+        border: 2px solid black;
+        max-width: 800px;
+        padding:20px;
+    }
+
+    .teacherinfo a {
+        background: red;
+        color:white;
+        text-decoration:none;
+        padding: 5px 10px;
+    }
+
+</style>

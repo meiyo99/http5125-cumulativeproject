@@ -1,0 +1,19 @@
+﻿@model cumulative1.Models.Teacher
+
+@{
+    ViewData["Title"] = "Delete Teacher";
+}
+
+<a href="/TeacherPage/Show/@Model.TeacherID">Back to teacher</a>
+
+<h2>Are you sure you want to delete the following teacher?</h2>
+<div>
+    <h4>@Model.FirstName @Model.LastName</h4>
+    <p><em>Employee Number:</em> @Model.EmployeeNum</p>
+    <p><em>Hire Date:</em> @Model.HireDate.ToString("yyyy-MM-dd")</p>
+    <p><em>Salary:</em> @Model.Salary</p>
+</div>
+
+<form method="POST" action="TeacherPage/Delete/@Model.TeacherID">
+    <input type="submit" name="name" value="Delete Teacher" />
+</form>
