@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using cumulative1.Models;
 using System;
 using MySql.Data.MySqlClient;
+using System.Diagnostics;
 
 namespace cumulative1.Controllers
 {
@@ -254,7 +255,7 @@ namespace cumulative1.Controllers
         /// <summary>
         /// This method will delete a teacher from the database.
         /// </summary>
-        /// <param name="TeacherID">The primary key</param>
+        /// <param name="id">The primary key</param>
         /// <returns>
         /// "Teacher Field Deleted Succesfully!"
         /// </returns>
@@ -262,8 +263,8 @@ namespace cumulative1.Controllers
         /// DELETE: api/DeleteTeacher/6 -> "Teacher Field Deleted Succesfully!"
         /// </example>
         [HttpDelete]
-        [Route(template: "/api/TeacherAPI/DeleteTeacher/{TeacherID}")]
-        public string DeleteTeacher(int TeacherID)
+        [Route(template: "/api/TeacherAPI/DeleteTeacher/{id}")]
+        public string DeleteTeacher(int id)
         {
             // connect to school database
             SchoolDBContext school = new SchoolDBContext();
@@ -279,7 +280,8 @@ namespace cumulative1.Controllers
                 // set up an sql command
                 string query = "delete from teachers where teacherid = @id";
                 Command.CommandText = query;
-                Command.Parameters.AddWithValue("@id", TeacherID);
+                Command.Parameters.AddWithValue("@id", id);
+                Command.ExecuteNonQuery();
 
                 int rowsAffected = Command.ExecuteNonQuery();
                 if (rowsAffected == 0)
@@ -288,6 +290,54 @@ namespace cumulative1.Controllers
                 }
             }
             return "Teacher Field Deleted Succesfully!"; ;
+        }
+
+        /// <summary>
+        /// We want to receive teacher information and update teacher details in the database.
+        /// </summary>
+        /// <returns>
+        /// The updated teacher object.
+        /// </returns>
+        /// <example>
+        /// PUT: /api/TeacherAPI/UpdateTeacher/{id}
+        /// Header: Content-Type: application/json
+        /// FORM DATA:
+        /// </example>
+        [HttpPut]
+        [Route(template:"api/TeacherAPI/UpdateTeacher/{id}")]
+        public string UpdateTeacher(int id, [FromBody] Teacher UpdatedTeacher)
+        {
+
+            // connect to school database
+            SchoolDBContext school = new SchoolDBContext();
+
+            // set up an sql command
+            string query = "update teachers set teacherfname = @firstname, teacherlname = @lastname, employeenumber = @employeenum, hiredate = @hiredate, salary = @salary where teacherid = @id";
+
+            using (MySqlConnection Connection = school.AccessDatabase())
+            {
+
+                Connection.Open();
+
+                // create a command with the connection
+                MySqlCommand Command = Connection.CreateCommand();
+
+                // set up an sql command
+                Command.CommandText = query;
+
+                Command.Parameters.AddWithValue("@id", id);
+                Command.Parameters.AddWithValue("@firstname", UpdatedTeacher.FirstName);
+                Command.Parameters.AddWithValue("@lastname", UpdatedTeacher.LastName);
+                Command.Parameters.AddWithValue("@employeenum", UpdatedTeacher.EmployeeNum);
+                Command.Parameters.AddWithValue("@hiredate", UpdatedTeacher.HireDate);
+                Command.Parameters.AddWithValue("@salary", UpdatedTeacher.Salary);
+
+                // run this query against the database
+                Command.ExecuteNonQuery();
+
+            }
+
+            return "Details Updated!";
         }
 
     }

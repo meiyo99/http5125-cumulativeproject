@@ -27,14 +27,45 @@
   },
   {
     "ContainingType": "cumulative1.Controllers.TeacherAPIController",
+    "Method": "UpdateTeacher",
+    "RelativePath": "api/TeacherAPI/api/TeacherAPI/UpdateTeacher/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "UpdatedTeacher",
+        "Type": "cumulative1.Models.Teacher",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "cumulative1.Controllers.TeacherAPIController",
     "Method": "DeleteTeacher",
-    "RelativePath": "api/TeacherAPI/DeleteTeacher/{TeacherID}",
+    "RelativePath": "api/TeacherAPI/DeleteTeacher/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "TeacherID",
+        "Name": "id",
         "Type": "System.Int32",
         "IsRequired": true
       }

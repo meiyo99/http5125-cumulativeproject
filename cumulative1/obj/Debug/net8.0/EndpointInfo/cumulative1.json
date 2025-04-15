@@ -179,14 +179,14 @@
         }
       }
     },
-    "/api/TeacherAPI/DeleteTeacher/{TeacherID}": {
+    "/api/TeacherAPI/DeleteTeacher/{id}": {
       "delete": {
         "tags": [
           "TeacherAPI"
         ],
         "parameters": [
           {
-            "name": "TeacherID",
+            "name": "id",
             "in": "path",
             "required": true,
             "schema": {
@@ -195,6 +195,65 @@
             }
           }
         ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/TeacherAPI/api/TeacherAPI/UpdateTeacher/{id}": {
+      "put": {
+        "tags": [
+          "TeacherAPI"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Teacher"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Teacher"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Teacher"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "OK",

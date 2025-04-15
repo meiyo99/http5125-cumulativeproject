@@ -16,7 +16,7 @@ namespace cumulative1.Controllers
         [HttpGet]
         public IActionResult Show(int id)
         {
-            //Teacher Object
+            // Find a teacher by their ID
             Teacher SelectedTeacher = _api.FindTeacher(id);
 
             // Direct to Views/TeacherPage/Show.cshtml
@@ -61,18 +61,18 @@ namespace cumulative1.Controllers
             return RedirectToAction("List");
         }
 
-        // GET: /TeacherPage/DeleteConfirm/{TeacherID} -> A webpage that confirms with user if they want to delete this teacher.
+        // GET: /TeacherPage/DeleteConfirm/{id} -> A webpage that confirms with user if they want to delete this teacher.
         [HttpGet]
         public IActionResult DeleteConfirm(int id)
         {
-            //Information about selected teacher
+            // Find a teacher by their ID
             Teacher SelectedTeacher = _api.FindTeacher(id);
 
             // Direct to Views/TeacherPage/DeleteConfirm.cshtml
             return View(SelectedTeacher);
         }
 
-        // POST: /TeacherPage/Delete/{TeacherID} -> Delete teacher at specified ID.
+        // POST: /TeacherPage/Delete/{id} -> Delete teacher at specified ID.
         [HttpPost]
         public IActionResult Delete(int id)
         {
@@ -80,6 +80,34 @@ namespace cumulative1.Controllers
             _api.DeleteTeacher(id);
 
             // Take us back to /TeacherPage/List.cshtml
+            return RedirectToAction("List");
+        }
+
+        // GET: /TeacherPage/Edit/{id} -> A webpage that display current teacher information and asks for any changes.
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            // Find a teacher by their ID
+            Teacher SelectedTeacher = _api.FindTeacher(id);
+
+            // Direct to Views/TeacherPage/Edit.cshtml
+            return View(SelectedTeacher);
+        }
+
+        // POST: /TeacherPage/Update/{id} -> Receives the updated teacher information.
+        // HEADER: Content-Type: application/x-www-form-urlencoded
+        // FORM DATA: ?FirstName={FirstName}&LastName={LastName}&EmployeeNum={EmployeeNum}&HireDate={HireDate}&Salary={Salary}
+        [HttpPost]
+        public IActionResult Update(int id, string FirstName, string LastName, string EmployeeNum, DateTime HireDate, decimal Salary)
+        {
+            Teacher UpdatedTeacher = new Teacher();
+            UpdatedTeacher.FirstName = FirstName;
+            UpdatedTeacher.LastName = LastName;
+            UpdatedTeacher.EmployeeNum = EmployeeNum;
+            UpdatedTeacher.HireDate = HireDate;
+            UpdatedTeacher.Salary = Salary;
+
+            _api.UpdateTeacher(id, UpdatedTeacher);
             return RedirectToAction("List");
         }
     }
