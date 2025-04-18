@@ -1,0 +1,52 @@
+﻿@model cumulative1.Models.Teacher
+
+@{
+    ViewData["Title"] = "Add New Teacher";
+}
+
+<nav>
+    <a class="navlink" href="/TeacherPage/List">Back To Teacher List</a>
+</nav>
+
+<h1>Add New Teacher</h1>
+
+<form method="POST" action="/TeacherPage/Create">
+    <div >
+        <label for="FirstName">First Name</label>
+        <input type="text" id="FirstName" name="FirstName" />
+    </div>
+    <div >
+        <label for="LastName">Last Name</label>
+        <input type="text" id="LastName" name="LastName" />
+    </div>
+    <div >
+        <label for="EmployeeNum">Employee Number</label>
+        <input type="text" id="EmployeeNum" name="EmployeeNum" />
+    </div>
+    <div>
+        <label for="HireDate">Hire Date</label>
+        <input type="date" id="HireDate" name="HireDate" />
+    </div>
+    <div >
+        <label for="Salary">Salary</label>
+        <input type="number" id="Salary" name="Salary" />
+    </div>
+    <div>
+        <input class="button" type="submit" value="Add Teacher">
+    </div>
+</form>
+
+<style>
+
+    form div {
+        padding:10px;
+    }
+
+    form .button {
+        padding: 10px 20px;
+        background: blue;
+        color: white;
+        border: 1px solid blue;
+    }
+
+</style>
